@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts
   end
 
   def new
@@ -13,8 +14,9 @@ class UsersController < ApplicationController
                              :password, :password_confirmation)
     @user = User.new(secure_params)
     if @user.save
-    	flash[:success] = "Welcome to the Twitter App!"
-        redirect_to @user # Handle a successful save.
+    	sign_in @user  # Call the sign in method in the sessions_helper.rb     
+      flash[:success] = "Welcome to the Twitter App!"    
+      redirect_to @user  
     else
         render 'new' # Handle an unsuccessful save.
     end

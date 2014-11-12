@@ -14,10 +14,11 @@
                     Account <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "Profile", current_user %></li> <!-- the link_to helper examines the second argument's type and generates a REST-based URL accordingly, e.g. Profile-->
+                    <li><%= link_to "Profile", current_user %></li> # the link_to helper examines the second argument's type and generates a REST-based URL accordingly, e.g. Profile
                     <li><%= link_to "Settings", '#' %></li>
                     <li class="divider"></li>
                     <li>
+                    # below generates Sign out
                       <%= link_to "Sign out", signout_path, method: "delete" %> 
                     </li>
                   </ul>
